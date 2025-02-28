@@ -285,7 +285,7 @@ public final class SlashCommandManager<S> extends CommandManager<SlashSender, S>
         manager.registerArgument(Member.class, (sender, arg) -> {
             final Guild guild = sender.getGuild();
             if (guild == null) return null;
-            return guild.getMemberById(arg);
+            return guild.retrieveMemberById(arg).complete();
         });
         manager.registerArgument(User.class, (sender, arg) -> sender.getEvent().getJDA().retrieveUserById(arg));
         manager.registerArgument(TextChannel.class, (sender, arg) -> {
