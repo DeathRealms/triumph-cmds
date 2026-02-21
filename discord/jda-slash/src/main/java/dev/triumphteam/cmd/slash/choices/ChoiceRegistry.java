@@ -34,13 +34,22 @@ import java.util.function.Supplier;
 public final class ChoiceRegistry {
 
     private final Map<ChoiceKey, Supplier<List<String>>> suggestions = new HashMap<>();
+    private final Map<Class<?>, Supplier<List<String>>> typeSuggestions = new HashMap<>();
 
     public void register(final @NotNull ChoiceKey key, final @NotNull Supplier<@NotNull List<@NotNull String>> resolver) {
         suggestions.put(key, resolver);
     }
 
+    public void register(final @NotNull Class<?> type, final @NotNull Supplier<@NotNull List<@NotNull String>> resolver) {
+        typeSuggestions.put(type, resolver);
+    }
+
     public @Nullable Supplier<@NotNull List<@NotNull String>> getChoiceResolver(final @NotNull ChoiceKey key) {
         return suggestions.get(key);
+    }
+
+    public @Nullable Supplier<@NotNull List<@NotNull String>> getChoiceResolver(final @NotNull Class<?> type) {
+        return typeSuggestions.get(type);
     }
 
 }

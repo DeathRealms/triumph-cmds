@@ -179,6 +179,10 @@ public final class SlashCommandManager<S> extends CommandManager<SlashSender, S>
         registryContainer.getChoiceRegistry().register(key, choiceSupplier);
     }
 
+    public void registerChoices(final @NotNull Class<?> type, final @NotNull Supplier<@NotNull List<@NotNull String>> choiceSupplier) {
+        registryContainer.getChoiceRegistry().register(type, choiceSupplier);
+    }
+
     @Override
     public void unregisterCommand(final @NotNull BaseCommand command) {
         // TODO: 12/7/2021 Implement some sort of unregistering

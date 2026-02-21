@@ -157,6 +157,12 @@ final class SlashSubCommandProcessor<S> extends AbstractSubCommandProcessor<S> {
                     continue;
                 }
 
+                final Supplier<List<String>> resolver = choiceRegistry.getChoiceResolver(type);
+                if (resolver != null) {
+                    setOrAdd(choiceList, addIndex, new SimpleChoice(resolver));
+                    continue;
+                }
+
                 setOrAdd(choiceList, addIndex, null);
                 continue;
             }
