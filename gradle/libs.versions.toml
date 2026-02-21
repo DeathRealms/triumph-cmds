@@ -10,7 +10,7 @@ assertj = "3.22.0"
 spigot = "1.18.2-R0.1-SNAPSHOT"
 
 # Discord
-jda = "6.1.0"
+jda = "6.3.1"
 
 
 [libraries]
